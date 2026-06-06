@@ -58,6 +58,21 @@
             background-color: #ff3356;
         }
 
+        /* Styling for the new extra button */
+        .surprise-btn {
+            background-color: #ff7096;
+            margin-top: 25px;
+            display: none; /* Hidden initially until letter is opened */
+            opacity: 0;
+            transition: opacity 1s ease;
+            width: 100%;
+        }
+
+        .surprise-btn.show-btn {
+            display: inline-block;
+            opacity: 1;
+        }
+
         .letter-box {
             opacity: 0;
             max-height: 0;
@@ -88,40 +103,51 @@
 
     <div class="container">
         <h1>Happy Birthday Eli! <span class="heart">❤️</span></h1>
-        <p class="subtitle">I made a little something for you. Press the button below.</p>
+        <p class="subtitle">I made a little something for you. It's not much, but I wanted to give you something from me and make your day a little more special.</p>
         
         <button class="btn" id="openBtn">Click to Open My Letter</button>
 
         <div class="letter-box" id="letter">
-<!-- 📝 EDIT YOUR LETTER BELOW THIS LINE -->
-Dear Elis,
+Happy Birthday, love. ❤️
 
-Happy Birthday to the most amazing girl in the world!
+I hope you have the happiest birthday today because you deserve nothing less. Thank you for always being here, for loving me, for your patience, and for being the person I can always run to.
 
-You are the girl who makes my world so much brighter. I hope today is as beautiful, fun, and amazing as you are. Every single day with you is a gift, and I am so incredibly grateful to have you in my life.
+I know we’ve had our ups and downs, but one thing I’ll always be grateful for is having you in my life. You make my days better, my problems lighter, and my world so much brighter just by being you.
 
-Thank you for your smile, your kindness, and for always being my person. I hope this day brings you as much happiness as you bring to me every day.
+I hope today brings you so much happiness, because that's exactly what you bring into my life every single day. Enjoy your day, eat lots of good food, take lots of pictures, and make lots of memories.
 
-I love you more than words can say.
+I love you so much, more than I could ever put into words. Thank you for being my girl, my best friend, and my favorite person.
+
+Happy Birthday again, love. ❤️
 
 Always and forever,
 
-Your baby, Khopher ❤️
-<!-- 📝 EDIT YOUR LETTER ABOVE THIS LINE -->
+See you soon. ❤️
+
+<button class="btn surprise-btn" id="surpriseBtn">Click this baby!</button>
         </div>
     </div>
 
     <script>
         const btn = document.getElementById('openBtn');
         const letter = document.getElementById('letter');
+        const surpriseBtn = document.getElementById('surpriseBtn');
 
         btn.addEventListener('click', () => {
             letter.classList.add('show');
-            btn.style.display = 'none'; // Hides the button after clicking
+            btn.style.display = 'none'; // Hides the first button after clicking
+            
+            // Shows the extra button smoothly right after the letter reveals
+            setTimeout(() => {
+                surpriseBtn.classList.add('show-btn');
+            }, 500); 
+        });
+
+        // 📝 EDIT WHAT HAPPENS WHEN SHE CLICKS THE SURPRISE BUTTON BELOW
+        surpriseBtn.addEventListener('click', () => {
+            alert("🎂 Surprise! I know it's not much, but I made this for you because you're worth every effort and every second. I love you so much, my maldita❤️");
         });
     </script>
 
 </body>
 </html>
-
- 
