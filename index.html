@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Baby! ❤️</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #fff5f5;
+            color: #4a4a4a;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 500px;
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(223, 112, 112, 0.1);
+        }
+
+        h1 {
+            color: #ff4d6d;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        p.subtitle {
+            font-size: 1.1rem;
+            color: #757575;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            background-color: #ff4d6d;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.2s, background-color 0.2s;
+            box-shadow: 0 5px 15px rgba(255, 77, 109, 0.3);
+        }
+
+        .btn:active {
+            transform: scale(0.95);
+            background-color: #ff3356;
+        }
+
+        .letter-box {
+            opacity: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: opacity 1s ease, max-height 1.5s ease;
+            margin-top: 0;
+            text-align: left;
+            line-height: 1.6;
+            font-size: 1.05rem;
+            white-space: pre-wrap; /* Keeps your paragraphs properly spaced */
+        }
+
+        .letter-box.show {
+            opacity: 1;
+            max-height: 2000px; /* Allows long text to expand */
+            margin-top: 30px;
+            border-top: 1px dashed #ffccd5;
+            padding-top: 20px;
+        }
+        
+        .heart {
+            color: #ff4d6d;
+            font-size: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Happy Birthday Eli! <span class="heart">❤️</span></h1>
+        <p class="subtitle">I made a little something for you. Press the button below.</p>
+        
+        <button class="btn" id="openBtn">Click to Open My Letter</button>
+
+        <div class="letter-box" id="letter">
+<!-- 📝 EDIT YOUR LETTER BELOW THIS LINE -->
+Dear Elis,
+
+Happy Birthday to the most amazing girl in the world!
+
+You are the girl who makes my world so much brighter. I hope today is as beautiful, fun, and amazing as you are. Every single day with you is a gift, and I am so incredibly grateful to have you in my life.
+
+Thank you for your smile, your kindness, and for always being my person. I hope this day brings you as much happiness as you bring to me every day.
+
+I love you more than words can say.
+
+Always and forever,
+
+Your baby, Khopher ❤️
+<!-- 📝 EDIT YOUR LETTER ABOVE THIS LINE -->
+        </div>
+    </div>
+
+    <script>
+        const btn = document.getElementById('openBtn');
+        const letter = document.getElementById('letter');
+
+        btn.addEventListener('click', () => {
+            letter.classList.add('show');
+            btn.style.display = 'none'; // Hides the button after clicking
+        });
+    </script>
+
+</body>
+</html>
+
+ 
