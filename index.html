@@ -59,19 +59,9 @@ h1 {
 }
 
 .letter-box {
-    opacity: 0;
-    max-height: 0;
-    overflow: hidden;
-    transition: opacity 1s ease, max-height 1.5s ease;
+    display: none;
+    margin-top: 20px;
     text-align: left;
-}
-
-.letter-box.show {
-    opacity: 1;
-    max-height: 3000px;
-    margin-top: 30px;
-    border-top: 1px dashed #ffccd5;
-    padding-top: 20px;
 }
 
 .page {
@@ -81,11 +71,6 @@ h1 {
 
 .page.active {
     display: block;
-}
-
-.page h2 {
-    text-align: center;
-    color: #ff4d6d;
 }
 
 .navigation {
@@ -109,13 +94,6 @@ h1 {
     color: #888;
 }
 
-.surprise-btn {
-    background-color: #ff7096;
-    margin-top: 25px;
-    display: none;
-    width: 100%;
-}
-
 .heart {
     color: #ff4d6d;
 }
@@ -123,6 +101,8 @@ h1 {
 </head>
 
 <body>
+
+<div class="container">
 
 <h1>Happy Birthday Eli! <span class="heart">❤️</span></h1>
 
@@ -136,9 +116,7 @@ I made a little something for you. It's not much, but I wanted to give you somet
 
 <div class="page active">
 <h2>Page 1 ❤️</h2>
-
-<p>
-Hi, baby ko
+<p>Hi, baby ko
     
 One of my favorite things about you is your smile. I don't think you realize how much it affects me, and honestly, I don't think I could ever fully explain it. Kahit badtrip ako, stressed, pagod, or having one of those days where everything feels heavy, seeing your smile somehow changes everything. It's like for a moment, all the noise in my head gets quieter. The things that were bothering me don't seem as big anymore. Somehow, just seeing you happy makes me feel okay too.
 
@@ -156,9 +134,7 @@ There are a lot of beautiful things in this world, but your smile will always be
 
 <div class="page">
 <h2>Page 2 ❤️</h2>
-
-<p>
-Another thing I love is your laugh. Kahit minsan inaasar kita para lang marinig ko siya. I know I act innocent after, but half the time I'm already expecting you to laugh because that's secretly the reward I'm waiting for. Your laugh is one of my favorite sounds in the world, and no song, no playlist, no random video could ever compete with it.
+<p>Another thing I love is your laugh. Kahit minsan inaasar kita para lang marinig ko siya. I know I act innocent after, but half the time I'm already expecting you to laugh because that's secretly the reward I'm waiting for. Your laugh is one of my favorite sounds in the world, and no song, no playlist, no random video could ever compete with it.
 
 There's something about hearing you laugh that instantly makes my day better. It doesn't matter if we're together, on call, or just sending voice messages. The moment I hear that laugh, I can't help but smile too. It's contagious in the best way possible. Sometimes I even find myself replaying moments in my head just because I remember the way you laughed.
 
@@ -174,9 +150,7 @@ So please never stop laughing, baby. Never stop being the person who can light u
 
 <div class="page">
 <h2>Page 3 ❤️</h2>
-
-<p>
-One of the things I love most about you is how caring you are. It's something you do so naturally that I don't even think you realize how much it means to me. You always check up on me, ask if I'm okay, remind me to take care of myself, and stay by my side even when I'm being difficult. No matter what's going on, you always find a way to make sure I'm okay first.
+<p>One of the things I love most about you is how caring you are. It's something you do so naturally that I don't even think you realize how much it means to me. You always check up on me, ask if I'm okay, remind me to take care of myself, and stay by my side even when I'm being difficult. No matter what's going on, you always find a way to make sure I'm okay first.
 
 There are so many little things you do that might seem small to you, but they mean everything to me. The random "kumain ka na ba?" messages, reminding me to rest when I'm tired, asking how my day went, or simply being there when I need someone to talk to. They're such simple things, but they make me feel loved in ways I can't always put into words.
 
@@ -189,14 +163,13 @@ You probably don't realize it, but you make me feel safe. Safe enough to be myse
 Thank you for always making me feel like I matter. Thank you for making me feel seen, appreciated, and loved even on the days when I don't feel deserving of it. Thank you for caring for me the way you do.
 
 If there's one thing I hope you never forget, it's this: all the love, care, and effort you give me never go unnoticed. I notice it. I appreciate it. And I fall in love with you a little more because of it every single day.
+
 </p>
 </div>
 
 <div class="page">
 <h2>Page 4 ❤️</h2>
-
-<p>
-Baby,
+<p>Baby,
 
 I love you for being you.
 
@@ -215,15 +188,12 @@ I don't just love the beautiful parts of you. I love the real you. The version o
 Life isn't perfect, and neither are we. But one thing I know for sure is that life is simply better with you in it. Better because of your presence. Better because of your laugh. Better because of your love. Better because every day feels a little brighter knowing that somewhere out there is a girl as amazing as you.
 
 And if I had the chance to do it all over again, I would still choose you. Every single time.
-
 </p>
 </div>
 
 <div class="page">
 <h2>Page 5 ❤️</h2>
-
-<p>
-Baby,
+<p>Baby,
 
 And finally, I love you because you're you.
 
@@ -256,78 +226,49 @@ Your baby ❤️
 See you soon.
 
 And when that day comes, I'll finally be able to tell you all of this while holding your hand instead of writing it screen.
-
 </p>
 </div>
 
 <div class="navigation">
-<button id="prevBtn">⬅ Previous</button>
-<button id="nextBtn">Next ➡</button>
+<button onclick="prevPage()">⬅ Previous</button>
+<button onclick="nextPage()">Next ➡</button>
 </div>
 
-<div class="page-counter" id="pageCounter">
-Page 1 of 5
-</div>
-
-<button class="btn surprise-btn" id="surpriseBtn">
-Go on, press the button. I've got one more thing to tell you.
-</button>
+<div class="page-counter" id="counter">Page 1 of 5</div>
 
 </div>
 
 </div>
 
 <script>
-const btn = document.getElementById('openBtn');
-const letter = document.getElementById('letter');
-const surpriseBtn = document.getElementById('surpriseBtn');
+let current = 0;
+const pages = document.querySelectorAll(".page");
+const counter = document.getElementById("counter");
 
-const pages = document.querySelectorAll('.page');
-const pageCounter = document.getElementById('pageCounter');
+function openLetter(){
+    document.getElementById("letter").style.display = "block";
+}
 
-let currentPage = 0;
+function showPage(i){
+    pages.forEach(p => p.classList.remove("active"));
+    pages[i].classList.add("active");
+    counter.innerText = `Page ${i+1} of ${pages.length}`;
+}
 
-function showPage(index){
-    pages.forEach(page => page.classList.remove('active'));
-    pages[index].classList.add('active');
-
-    pageCounter.textContent = `Page ${index + 1} of ${pages.length}`;
-
-    if(index === pages.length - 1){
-        surpriseBtn.style.display = 'block';
-    } else {
-        surpriseBtn.style.display = 'none';
+function nextPage(){
+    if(current < pages.length - 1){
+        current++;
+        showPage(current);
     }
 }
 
-btn.addEventListener('click', () => {
-    letter.classList.add('show');
-    btn.style.display = 'none';
-    showPage(0);
-});
-
-document.getElementById('nextBtn').addEventListener('click', () => {
-    if(currentPage < pages.length - 1){
-        currentPage++;
-        showPage(currentPage);
+function prevPage(){
+    if(current > 0){
+        current--;
+        showPage(current);
     }
-});
-
-document.getElementById('prevBtn').addEventListener('click', () => {
-    if(currentPage > 0){
-        currentPage--;
-        showPage(currentPage);
-    }
-});
-
-surpriseBtn.addEventListener('click', () => {
-    alert("Happy Birthday, my love.
-
-Thank you for walking into my life and making it better in ways you'll never fully understand. I know this isn't much, but every word here was written with you in mind.
-
-I love you more than I could ever fit into a letter, my maldita.");
-});
+}
 </script>
 
 </body>
-
+</html>
