@@ -58,6 +58,29 @@ h1 {
     transform: scale(1.03);
 }
 
+.btn-final {
+    background-color: #ff4d6d;
+    color: white;
+    border: none;
+    padding: 15px 35px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 50px;
+    cursor: pointer;
+    margin-top: 25px;
+    display: inline-block;
+    box-shadow: 0 5px 15px rgba(255, 77, 109, 0.4);
+    animation: pulse 2s infinite;
+    text-decoration: none;
+    line-height: 1.4;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.03); box-shadow: 0 5px 25px rgba(255, 77, 109, 0.6); }
+    100% { transform: scale(1); }
+}
+
 .letter-box {
     display: none;
     margin-top: 20px;
@@ -97,6 +120,14 @@ h1 {
 .heart {
     color: #ff4d6d;
 }
+
+/* Hidden by default, will fade in smoothly when button is pressed */
+#surprise-message {
+    display: none;
+    margin-top: 25px;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+}
 </style>
 </head>
 
@@ -106,11 +137,11 @@ h1 {
 
 <h1>Happy Birthday Eli! <span class="heart">❤️</span></h1>
 
-<p class="subtitle">
+<p class="subtitle" id="subtitle">
 I made a little something for you. It's not much, but I wanted to give you something from me.
 </p>
 
-<button class="btn" onclick="openLetter()">Click to Open My Letter</button>
+<button class="btn" id="open-btn" onclick="openLetter()">Click to Open My Letter</button>
 
 <div class="letter-box" id="letter">
 
@@ -163,7 +194,6 @@ You probably don't realize it, but you make me feel safe. Safe enough to be myse
 Thank you for always making me feel like I matter. Thank you for making me feel seen, appreciated, and loved even on the days when I don't feel deserving of it. Thank you for caring for me the way you do.
 
 If there's one thing I hope you never forget, it's this: all the love, care, and effort you give me never go unnoticed. I notice it. I appreciate it. And I fall in love with you a little more because of it every single day.
-
 </p>
 </div>
 
@@ -227,6 +257,19 @@ See you soon.
 
 And when that day comes, I'll finally be able to tell you all of this while holding your hand instead of writing it screen.
 </p>
+
+<!-- The action button at the bottom of page 5 -->
+<div style="text-align: center; margin-top: 30px;">
+    <button class="btn-final" id="surprise-btn" onclick="revealBirthdaySurprise()">Go on, press the button. I've got one more thing to tell you. ❤️</button>
+</div>
+
+<!-- The paragraph layout that appears only when she presses the button -->
+<div id="surprise-message">
+    <p style="margin-top: 25px;"><strong>Happy Birthday, my love.</strong></p>
+    <p>Thank you for walking into my life and making it better in ways you'll never fully understand. I know this isn't much, but every word here was written with you in mind.</p>
+    <p>I love you more than I could ever fit into a letter, my maldita. ❤️</p>
+</div>
+
 </div>
 
 <div class="navigation">
@@ -247,6 +290,10 @@ const counter = document.getElementById("counter");
 
 function openLetter(){
     document.getElementById("letter").style.display = "block";
+    document.getElementById("open-btn").style.display = "none";
+    document.getElementById("subtitle").style.display = "none";
+    current = 0;
+    showPage(current);
 }
 
 function showPage(i){
@@ -267,6 +314,20 @@ function prevPage(){
         current--;
         showPage(current);
     }
+}
+
+function revealBirthdaySurprise() {
+    const msg = document.getElementById("surprise-message");
+    const btn = document.getElementById("surprise-btn");
+    
+    // Displays the text section dynamically
+    msg.style.display = "block";
+    setTimeout(() => {
+        msg.style.opacity = "1";
+    }, 10);
+    
+    // Hides the prompt button smoothly since she already clicked it
+    btn.style.display = "none";
 }
 </script>
 
